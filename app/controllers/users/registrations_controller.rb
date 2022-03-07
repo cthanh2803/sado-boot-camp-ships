@@ -12,8 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
-    puts params[:user][:members][:first_name]
-    puts params[:user][:cars][:car_model]
+    puts params[:user][:members]
+    puts params[:user][:cars]
     member = Member.create(first_name: params[:user][:members][:first_name],
     family_name: params[:user][:members][:family_name],
     first_name_kana: params[:user][:members][:first_name_kana],
@@ -45,6 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     car_kana_second: params[:user][:cars][:car_kana_second],
     car_number_second: params[:user][:cars][:car_number_second])
     super
+    redirect 'root_path'
   end
   # GET /resource/edit
   # def edit
