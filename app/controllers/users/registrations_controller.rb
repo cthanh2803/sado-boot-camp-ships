@@ -30,6 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     telephone_number_third: params[:user][:members][:telephone_number_third],
     post_code: params[:user][:members][:post_code],
     address: params[:user][:members][:address],
+    email: params[:user][:members][:email],
     municipalities: params[:user][:members][:municipalities])
     
     car = Car.create(car_model: params[:user][:cars][:car_model],
@@ -45,7 +46,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     car_kana_second: params[:user][:cars][:car_kana_second],
     car_number_second: params[:user][:cars][:car_number_second])
     super
-    redirect 'root_path'
   end
   # GET /resource/edit
   # def edit

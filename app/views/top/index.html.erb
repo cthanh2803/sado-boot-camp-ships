@@ -260,6 +260,7 @@
           <div class="reservation">
             <p class="decoration">Reservation</p>
             <h3 class="title">乗船予約</h3>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
             <div class="reservation-content">
               <div id="top-boarding-reservation" class="top-boarding-reservation">
                 <div class="controls">

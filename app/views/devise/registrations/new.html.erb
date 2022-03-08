@@ -1,5 +1,45 @@
-<div style="margin-top: 50px;">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="https://reservation.sadokisen.co.jp/webyoyaku/css/wm/webmember.css" type="text/css">
+<title> お客様情報の登録 </title>
+<link rel="stylesheet" href="https://reservation.sadokisen.co.jp/webyoyaku/css/wm/wmg0040.css" type="text/css">
+<script type="text/javascript" src="https://reservation.sadokisen.co.jp/webyoyaku/js/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://reservation.sadokisen.co.jp/webyoyaku/js/commonWJ.js"></script>
+<script type="text/javascript" src="https://reservation.sadokisen.co.jp/webyoyaku/js/kk/common.js"></script>
+<script type="text/javascript" src="https://reservation.sadokisen.co.jp/webyoyaku/js/kk/webkaiin.js"></script>
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="../image/favicon.ico">
+<link rel="icon" type="image/vnd.microsoft.icon" href="../image/favicon.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body class="FontNotoSans">
 <%= form_for @user, url: registration_path(resource_name) do |f| %>
+    <div class="PageHeader">
+      <table class="HeaderTitleArea">
+        <tbody>
+          <tr>
+            <td style="padding-left:28px;"> <img id="ctl00_imgLogo" src="https://reservation.sadokisen.co.jp/webyoyaku/image/logo.gif" alt="佐渡汽船ロゴイメージ" style="border-width:0px;"> </td>
+            <td align="right">
+              <!-- 表示言語選択 -->
+            </td>
+          </tr>
+          <tr>
+            <td class="SiteTitle"> <span id="ctl00_lblPageTitle">インターネット予約</span> </td>
+          </tr>
+        </tbody>
+      </table>
+      <table id="ctl00_tblLoginUser" class="LoginUser" border="0">
+        <tbody>
+          <tr></tr>
+        </tbody>
+      </table>
+      <div class="ApplicationName"> <span id="ctl00_lblApplicationName">お客様情報の登録</span> </div>
+    </div>
+    <div class="PageBody">
+
     <div class="field">
         <%= f.label :email %><br />
         <%= f.text_field :email%>
@@ -10,145 +50,331 @@
     </div>
     <br>
   <div>
+  <div id="divCustomerInfo" class="CustomerInfoArea">
+  <div id="divCustomerInfoTitle" class="TitleArea"> <img id="ctl00_ContentPlaceHolder1_imgHumanIcon" class="TitleIcon" src="https://reservation.sadokisen.co.jp/webyoyaku/image/icon_human.png" alt="human" style="border-width:0px;"> <span id="ctl00_ContentPlaceHolder1_lblCustomerInfo" class="OkyakusamaJohoLabel">お客様情報</span> </div>
+  <div id="divName" class="InputAreaFrame NameInputArea">
   <%= f.fields_for :members do |m| %>
-    <div>
-        <%= m.label :first_name %>
-        <%= m.text_field :first_name %>
+    <div class="TitleArea">
+        <div class="TitleLabel"> <span id="ctl00_ContentPlaceHolder1_lblName">お名前</span> </div>
+        <div class="HissuIcon"> <span id="ctl00_ContentPlaceHolder1_iconKanaSeimei" class="FontHiragino">必須</span> </div>
     </div>
-    <div>
-        <%= m.label :family_name %>
-        <%= m.text_field :family_name %>
+  <div id="ctl00_ContentPlaceHolder1_divKanaInputTable" class="InputTable">
+    <div class="InputTableRow FontHiragino">
+      <div id="ctl00_ContentPlaceHolder1_cellKanaSei" class="InputCell">
+        <div class="InputTableColumn "> <span id="ctl00_ContentPlaceHolder1_lblKanaSei" class="HosokuText">セイ</span> </div>
+            <%= m.text_field :first_name_kana %>
+        </div>
+        <div id="ctl00_ContentPlaceHolder1_cellKanaMei" class="InputCell">
+          <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblKanaMei" class="HosokuText">メイ</span> </div>
+            <%= m.text_field :family_name_kana %>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="ctl00_ContentPlaceHolder1_divKanjiInputTable" class="InputTable">
+        <div class="InputTableRow FontHiragino">
+          <div id="ctl00_ContentPlaceHolder1_cellKanjiSei" class="InputCell">
+            <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblKanjiSei" class="HosokuText">姓</span> </div>
+              <%= m.text_field :first_name %>
+            </div>
+            <div id="ctl00_ContentPlaceHolder1_cellKanjiMei" class="InputCell">
+              <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblKanjiMei" class="HosokuText">名</span> </div>
+                <%= m.text_field :family_name %>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-        <%= m.label :first_name_kana %>
-        <%= m.text_field :first_name_kana %>
+
+
+    <div id="divBirth" class="InputAreaFrame BirthInpuArea">
+    <div class="TitleArea">
+      <div class="TitleLabel"> <span id="ctl00_ContentPlaceHolder1_lblBirth">生年月日</span> </div>
+      <div class="HissuIcon"> <span id="ctl00_ContentPlaceHolder1_iconBirth" class="FontHiragino" style="">必須</span> </div>
     </div>
-    <div>
-        <%= m.label :family_namekana %>
-        <%= m.text_field :family_namekana %>
-    </div>
-    <div>
-        <%= m.label :birthday_year %>
+    <div id="ctl00_ContentPlaceHolder1_divBirthInputTable" class="InputTable">
+      <div class="InputTableRow FontHiragino">
+        <div id="ctl00_ContentPlaceHolder1_cellBirthYYYY" class="InputCell">
+          <div class="SelectWrap SmallDropDown">
         <%= m.text_field :birthday_year %>
-    </div>
-    <div>
-        <%= m.label :birthday_month %>
+        </div>
+        </div>
+        <div id="ctl00_ContentPlaceHolder1_cellBirthMM" class="InputCell">
+          <div class="SelectWrap  SmallDropDown">
         <%= m.text_field :birthday_month %>
     </div>
-    <div>
-        <%= m.label :birthday_day %>
+
+    </div>
+    </div>
+    <div id="ctl00_ContentPlaceHolder1_cellBirthDD" class="InputCell">
+      <div class="SelectWrap  SmallDropDown">
         <%= m.text_field :birthday_day %>
-    </div>
-    <div>
-        <%= m.label :gender %>
-        <%= m.text_field :gender %>
-    </div>
-    <div>
-        <%= m.label :telephone_number_first %>
-        <%= m.text_field :telephone_number_first %>
-    </div>
-    <div>
-        <%= m.label :telephone_number_second %>
-        <%= m.text_field :telephone_number_second %>
-    </div>
-    <div>
-        <%= m.label :telephone_number_third %>
-        <%= m.text_field :telephone_number_third %>
-    </div>
-    <div>
-        <%= m.label :landline_number_third %>
-        <%= m.text_field :landline_number_third %>
-    </div>
-    <div>
-        <%= m.label :landline_number_third %>
-        <%= m.text_field :landline_number_third %>
-    </div>
-    <div>
-        <%= m.label :landline_number_third %>
-        <%= m.text_field :landline_number_third %>
-    </div>
-    <div>
-        <%= m.label :post_code %>
-        <%= m.text_field :post_code %>
-    </div>
-    <div>
-        <%= m.label :municipalities %>
-        <%= m.text_field :municipalities %>
-    </div>
-    <div>
-        <%= m.label :address %>
-        <%= m.text_field :address %>
-    </div>
-    <div>
-        <%= m.label :email %>
-        <%= m.text_field :email %>
-    </div>
-<% end %>
-</div>
-<br>
-<div>
-    <%= f.fields_for :cars do |c| %>
-        <div>
-            <%= c.label :car_model %>
-            <%= c.text_field :car_model %>
         </div>
-        <div>
-            <%= c.label :car_model_second %>
-            <%= c.text_field :car_model_second %>
         </div>
-        <div>
-            <%= c.label :car_displacemen %>
-            <%= c.text_field :car_displacemen %>
-        </div>
-        <div>
-            <%= c.label :car_displacement_second %>
-            <%= c.text_field :car_displacement_second %>
-        </div>
-        <div>
-            <%= c.label :car_registered_place %>
-            <%= c.text_field :car_registered_place %>
-        </div>
-        <div>
-            <%= c.label :car_registered_place_second %>
-            <%= c.text_field :car_registered_place_second %>
-        </div>
-        <div>
-            <%= c.label :car_model_number %>
-            <%= c.text_field :car_model_number %>
-        </div>
-        <div>
-            <%= c.label :car_model_number_second %>
-            <%= c.text_field :car_model_number_second %>
-        </div>
-        <div>
-            <%= c.label :car_kana %>
-            <%= c.text_field :car_kana %>
-        </div>
-        <div>
-            <%= c.label :car_kana_second %>
-            <%= c.text_field :car_kana_second %>
-        </div>
-        <div>
-            <%= c.label :car_number %>
-            <%= c.text_field :car_number %>
-        </div>
-        <div>
-            <%= c.label :car_number_second %>
-            <%= c.text_field :car_number_second %>
-        </div>
-    <% end %>
-</div>
-<br>
-    <div class="field">
-        <%= f.label :password %><br />
-        <%= f.text_field :password%>
+      </div>
     </div>
-    <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.text_field :password_confirmation%>
-    </div>
-    <br>
   </div>
-    <%= f.submit %>
- <% end %>
+
+  <div id="ctl00_ContentPlaceHolder1_divGender" class="InputAreaFrame GenderInputArea">
+  <div class="TitleArea">
+    <div class="TitleLabel"> <span id="ctl00_ContentPlaceHolder1_lblGender">性別</span> </div>
+    <div class="HissuIcon"> <span id="ctl00_ContentPlaceHolder1_iconGender" class="FontHiragino" style="">必須</span> </div>
+  </div>
+  <div id="ctl00_ContentPlaceHolder1_divGenderInputTable" class="InputTable">
+    <div class="InputTableRow FontHiragino">
+      <div id="ctl00_ContentPlaceHolder1_cellGender" class="InputCell">
+        <div class="SelectWrap MediumDropDown">
+          <%= m.text_field :gender %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ctl00_ContentPlaceHolder1_divTel" class="InputAreaFrame TelInpuArea">
+  <div class="TitleArea">
+    <div class="TitleLabel"> <span id="ctl00_ContentPlaceHolder1_lblTell">電話番号</span> </div>
+    <div class="HissuIcon"> <span id="ctl00_ContentPlaceHolder1_iconTelJitaku" class="FontHiragino" style="">必須</span> </div>
+  </div>
+
+  <div class="Note"> <span id="ctl00_ContentPlaceHolder1_lblTelNote">固定電話および携帯電話のいずれかを半角数字で入力してください。</span> </div>
+  <div id="ctl00_ContentPlaceHolder1_divTelNote2" class="Note"> <span id="ctl00_ContentPlaceHolder1_lblTelNote2">※携帯電話をお持ちの方は携帯番号の入力をお願いします。</span> </div>
+  <div id="ctl00_ContentPlaceHolder1_divTelJitaku">
+    <div id="ctl00_ContentPlaceHolder1_divTelJitakuColumn" class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblTelJitaku" class="HosokuText">固定電話</span> </div>
+    <div id="ctl00_ContentPlaceHolder1_divTelJitakuInputTable" class="InputTable">
+      <div class="InputTableRow FontHiragino">
+        <div id="ctl00_ContentPlaceHolder1_cellTelJitaku1" class="InputCell">
+        <%= m.text_field :telephone_number_first %>
+        <div id="ctl00_ContentPlaceHolder1_cellTelJitaku2" class="InputCell">
+        <%= m.text_field :telephone_number_second %>
+        <div id="ctl00_ContentPlaceHolder1_cellTelJitaku3" class="InputCell">
+        <%= m.text_field :telephone_number_third %>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="ctl00_ContentPlaceHolder1_divTelNichuu">
+    <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblTelNichuu" class="HosokuText">携帯電話</span> </div>
+    <div id="ctl00_ContentPlaceHolder1_divTelNichuuInputTable" class="InputTable">
+      <div class="InputTableRow FontHiragino">
+        <div id="ctl00_ContentPlaceHolder1_cellTelNichuu1" class="InputCell">
+        <%= m.text_field :landline_number_first %>
+        <div id="ctl00_ContentPlaceHolder1_cellTelNichuu2" class="InputCell">
+        <%= m.text_field :landline_number_second %>
+        <div id="ctl00_ContentPlaceHolder1_cellTelNichuu3" class="InputCell">
+        <%= m.text_field :landline_number_third %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ctl00_ContentPlaceHolder1_updPanelJushoShutoku">
+  <div id="ctl00_ContentPlaceHolder1_divYuubinNo" class="InputAreaFrame YuubinNoInpuArea">
+    <div class="TitleArea">
+      <div class="TitleLabel"> <span id="ctl00_ContentPlaceHolder1_lblYuubinNo">郵便番号</span> </div>
+      <div class="HissuIcon"> <span id="ctl00_ContentPlaceHolder1_iconYuubinNo" class="FontHiragino" style="">必須</span> </div>
+    </div>
+    <div id="ctl00_ContentPlaceHolder1_divYuubinNoInputTable" class="InputTable">
+      <div class="InputTableRow ">
+        <div id="ctl00_ContentPlaceHolder1_cellYuubinNo" class="InputCell">
+        <%= m.text_field :post_code %>
+        </div>
+        <div id="ctl00_ContentPlaceHolder1_cellJushoShutoku"> <input type="submit" name="ctl00$ContentPlaceHolder1$btnJushoShutoku" value="住所取得" id="ctl00_ContentPlaceHolder1_btnJushoShutoku" tabindex="16" class="ButtonSkeletonBlue"> </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ctl00_ContentPlaceHolder1_divJusho" class="InputAreaFrame JushoInpuArea">
+  <div class="TitleArea">
+    <div class="TitleLabel"> <span id="ctl00_ContentPlaceHolder1_lblJusho">住所</span> </div>
+    <div class="HissuIcon"> <span id="ctl00_ContentPlaceHolder1_iconJusho" class="FontHiragino" style="">必須</span> </div>
+  </div>
+  <div id="ctl00_ContentPlaceHolder1_divTodofukenInputTable" class="InputTable">
+    <div class="InputTableRow FontHiragino">
+      <div id="ctl00_ContentPlaceHolder1_cellTodofuken" class="InputCell">
+        <div class="SelectWrap MediumDropDown">
+        <%= m.text_field :municipalities %>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="ctl00_ContentPlaceHolder1_divAddressInputTable" class="InputTable">
+    <div class="InputTableRow FontHiragino">
+      <div id="ctl00_ContentPlaceHolder1_cellAddress" class="InputCell">
+        <div class="InputTableColumn "> <span id="ctl00_ContentPlaceHolder1_lblAddress" class="HosokuText">市区町村・番地</span> </div>
+        <%= m.text_field :address %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ctl00_ContentPlaceHolder1_divMailAddress" class="InputAreaFrame MailAddressInputArea">
+  <div class="TitleArea">
+    <div class="TitleLabel"> <span id="ctl00_ContentPlaceHolder1_lblMailAddress">メールアドレス</span> </div>
+    <div class="HissuIcon"> <span id="ctl00_ContentPlaceHolder1_iconMailAddressPc" class="FontHiragino" style="">必須</span> </div>
+  </div>
+  <div class="Note"> <span id="ctl00_ContentPlaceHolder1_lblMailAddressNote">メールアドレスを半角で入力して下さい。</span> </div>
+  <div id="ctl00_ContentPlaceHolder1_divMailAddressPCInputTable" class="InputTable">
+    <div class="InputTableRow FontHiragino">
+      <div id="ctl00_ContentPlaceHolder1_cellTxtMailAddressPc" class="InputCell">
+        <div class="InputTableColum"> <span id="ctl00_ContentPlaceHolder1_lblMailAddressPc" class="HosokuText">メールアドレス①【必須】</span> </div>
+        <%= m.text_field :email %>
+        </div>
+        </div>
+      </div>
+
+<% end %>
+
+
+<div id="ctl00_ContentPlaceHolder1_divCarInfo">
+<div id="ctl00_ContentPlaceHolder1_divCarInfoTitle" class="TitleArea"> <img id="ctl00_ContentPlaceHolder1_imgCarFront" class="TitleIcon" src="https://reservation.sadokisen.co.jp/webyoyaku/image/icon_carfront.png" alt="carfront" style="border-width:0px;"> <span id="ctl00_ContentPlaceHolder1_lblCarInfoTitle" class="OkyakusamaJohoLabel">車両情報</span> </div>
+<table id="ctl00_ContentPlaceHolder1_tblCarInfo1" class="SharyoJohoArea" border="0">
+    <%= f.fields_for :cars do |c| %>
+        <tbody>
+        <tr>
+          <td>
+            <div id="acdn-button" class="acdn-button"> <input type="hidden" name="ctl00$ContentPlaceHolder1$Hiddenacdn" id="ctl00_ContentPlaceHolder1_Hiddenacdn" value="1"> <span id="ctl00_ContentPlaceHolder1_lblCarInfo1">車両情報①</span> <span id="acdn-button-arrow" class="acdn-button-arrow">▲</span> </div>
+            <div id="acdn-target" class="acdn-target" style>
+              <div id="ctl00_ContentPlaceHolder1_divSyasyuHaikiryoInputable1" class="InputTable ShashuArea">
+                <div class="InputTableRow FontHiragino">
+                  <div id="ctl00_ContentPlaceHolder1_cellShashu1" class="InputCell">
+                    <div class="InputTableColumn FontHiragino"> <span id="ctl00_ContentPlaceHolder1_lblShashuZentyouHaiki1" class="SharyoJohoColumnLabel">車両の情報を入力してください</span> </div>
+                    <div class="SelectWrap">
+            <%= c.text_field :car_model %>
+            </div>
+            </div>
+            <div id="ctl00_ContentPlaceHolder1_cellZentyouHaiki1" class="InputCell">
+              <div class="SelectWrap">
+            <%= c.text_field :car_displacement %>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="ctl00_ContentPlaceHolder1_divCarNoArea1" class="CarNoArea">
+        <div class="InputTableColumn FontHiragino"> <span id="ctl00_ContentPlaceHolder1_lblCarNo1" class="SharyoJohoColumnLabel">車両のナンバー</span> </div>
+        <div id="ctl00_ContentPlaceHolder1_divCarNoInputArea1" class="InputTable">
+          <div class="InputTableRow">
+            <div id="ctl00_ContentPlaceHolder1_cellRikuunSikyoku1" class="InputCell">
+              <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblRikuunSikyoku1" class="CarNoColumn">登録地(全角)</span> <span id="ctl00_ContentPlaceHolder1_lblRikuunSikyokuNote1" class="CarNoHosoku">例:例：新潟</span> </div>
+        <%= c.text_field :car_registered_place %>
+        </div>
+        <div id="ctl00_ContentPlaceHolder1_cellBunruiNo1" class="InputCell">
+          <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblBunruiNo1" class="CarNoColumn">車種No.(半角)</span> <span id="ctl00_ContentPlaceHolder1_lblBunruiNoNote1" class="CarNoHosoku">例:例：500</span> </div>
+    <%= c.text_field :car_model_number %>
+    </div>
+    <div id="ctl00_ContentPlaceHolder1_cellHiragana1" class="InputCell">
+      <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblHiragana1" class="CarNoColumn">かな(全角)</span> <span id="ctl00_ContentPlaceHolder1_lblHiraganaNote1" class="CarNoHosoku">例:例：わ</span> </div>
+<%= c.text_field :car_kana %>
 </div>
+<div id="ctl00_ContentPlaceHolder1_cellSharyoNo1" class="InputCell">
+  <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblSharyoNo1" class="CarNoColumn">ナンバー(半角)</span> <span id="ctl00_ContentPlaceHolder1_lblSharyoNoNote1" class="CarNoHosoku">車両番号の下4桁</span> </div>
+<%= c.text_field :car_number %>
+</div>
+</div>
+</div>
+<div class="SharyoJohoChui"> <span id="ctl00_ContentPlaceHolder1_lblSharyoJohoChui1"></span> <span id="ctl00_ContentPlaceHolder1_lblSharyoJohoKenin1"><br>※けん引車両、トラックはお電話にてお申込みください。</span> </div>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td class="SharyoJohoMagin"></td>
+</tr>
+<tr>
+<td>
+<div id="acdn-button2" class="acdn-button"> <input type="hidden" name="ctl00$ContentPlaceHolder1$Hiddenacdn2" id="ctl00_ContentPlaceHolder1_Hiddenacdn2" value="0"> <span id="ctl00_ContentPlaceHolder1_lblCarInfo2">車両情報②</span> <span id="acdn-button-arrow2" class="acdn-button-arrow">▼</span> </div>
+<div id="acdn-target2" class="acdn-target">
+<div id="ctl00_ContentPlaceHolder1_divSyasyuHaikiryoInputable2" class="InputTable ShashuArea">
+<div class="InputTableRow FontHiragino">
+<div id="ctl00_ContentPlaceHolder1_cellShashu2" class="InputCell">
+  <div class="InputTableColumn FontHiragino"> <span id="ctl00_ContentPlaceHolder1_lblShashuZentyouHaiki2" class="SharyoJohoColumnLabel">車両の情報を入力してください</span> </div>
+  <div class="SelectWrap">
+            <%= c.text_field :car_model_second %>
+            </div>
+            </div>
+            <div id="ctl00_ContentPlaceHolder1_cellZentyouHaiki2" class="InputCell">
+              <div class="SelectWrap">
+            <%= c.text_field :car_displacement_second %>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div id="ctl00_ContentPlaceHolder1_divCarNoArea2" class="CarNoArea">
+          <div class="InputTableColumn FontHiragino"> <span id="ctl00_ContentPlaceHolder1_lblCarNo2" class="SharyoJohoColumnLabel">車両のナンバー</span> </div>
+          <div id="ctl00_ContentPlaceHolder1_divCarNoInputTable2" class="InputTable">
+            <div class="InputTableRow">
+              <div id="ctl00_ContentPlaceHolder1_cellRikuunSikyoku2" class="InputCell">
+                <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblRikuunSikyoku2" class="CarNoColumn">登録地(全角)</span> <span id="ctl00_ContentPlaceHolder1_lblRikuunSikyokuNote2" class="CarNoHosoku">例:例：新潟</span> </div>
+            <%= c.text_field :car_registered_place_second %>
+            </div>
+            <div id="ctl00_ContentPlaceHolder1_cellBunruiNo2" class="InputCell">
+              <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblBunruiNo2" class="CarNoColumn">車種No.(半角)</span> <span id="ctl00_ContentPlaceHolder1_lblBunruiNoNote2" class="CarNoHosoku">例:例：500</span> </div>
+            <%= c.text_field :car_model_number_second %>
+            </div>
+            <div id="ctl00_ContentPlaceHolder1_cellHiragana2" class="InputCell">
+              <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblHiragana2" class="CarNoColumn">かな(全角)</span> <span id="ctl00_ContentPlaceHolder1_lblHiraganaNote2" class="CarNoHosoku">例:例：わ</span> </div>
+            <%= c.text_field :car_kana_second %>
+            </div>
+            <div id="ctl00_ContentPlaceHolder1_cellSharyoNo2" class="InputCell">
+              <div class="InputTableColumn"> <span id="ctl00_ContentPlaceHolder1_lblSharyoNo2" class="CarNoColumn">ナンバー(半角)</span> <span id="ctl00_ContentPlaceHolder1_lblSharyoNoNote2" class="CarNoHosoku">車両番号の下4桁</span> </div>
+            <%= c.text_field :car_number_second %>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="SharyoJohoChui"> <span id="ctl00_ContentPlaceHolder1_lblSharyoJohoChui2"></span> <span id="ctl00_ContentPlaceHolder1_lblSharyoJohoKenin2"><br>※けん引車両、トラックはお電話にてお申込みください。</span> </div>
+      </div>
+    </td>
+  </tr>
+</tbody>
+
+    <% end %>
+
+    </table>
+    <table id="ctl00_ContentPlaceHolder1_tblPassword" class="InputAreaFrame PasswordInputArea" border="0">
+      <tbody>
+        <tr>
+          <td>
+            <div class="TitleArea">
+              <div class="TitleLabel"> <span id="ctl00_ContentPlaceHolder1_lblPasswordInfo">パスワード</span> </div>
+              <div class="HissuIcon"> <span id="ctl00_ContentPlaceHolder1_iconPassword" class="FontHiragino">必須</span> </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="Note"> <span id="ctl00_ContentPlaceHolder1_lblPasswordNote">佐渡汽船インターネット予約にログインする際のパスワードとなります。</span> </div>
+          </td>
+        </tr>
+        <tr>
+          <td id="ctl00_ContentPlaceHolder1_cellConfirmPassword" class="InputCell">
+        <%= f.text_field :password%>
+        </td>
+        <td class="PasswordRule FontHiragino" rowspan="3"> <span id="ctl00_ContentPlaceHolder1_lblConfirmPasswordRequiredNote">ご使用できる文字は大小アルファベット・数字・ハイフン｢-｣・アンダーライン｢_｣になります。</span> </td>
+      </tr>
+      <tr>
+        <td> <span id="ctl00_ContentPlaceHolder1_lblConfirmPasswordRequired" class="HosokuText FontHiragino">確認入力</span> </td>
+      </tr>
+      <tr>
+        <td id="ctl00_ContentPlaceHolder1_cellConfirmPasswordRequired" class="InputCell">
+        <%= f.text_field :password_confirmation%>
+        </td>
+        </tr>
+      </tbody> <br> </table>
+      <div class="UnderButtonArea">
+        <%= f.submit %>
+ <% end %>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="PageFooter"> <br>
+   <font color="red">&nbsp;</font> <br> </div>
+
+</body>
